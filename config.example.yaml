@@ -1,0 +1,37 @@
+# Create by Abraham Greyson<wechat:abrahamgreyson>
+# DateTime 2024/6/13 下午4:10
+
+# 配置文件模板
+# 请将此文件复制一份并命名为config.yaml
+
+# 云服务
+cloud:
+  huawei:
+    region: cn-north-1
+    access_key: access_key
+    secret_key: secret_key
+    rules:
+      - sg: sg-87654321
+        allow:
+        - ip: 192.168.1.2
+          port: 80
+  tencent:
+    region: tencent_cloud_region_code(e.g ap-guangzhou)
+    secret_id: secret_id
+    secret_key: secret_key
+    rules:
+      - sg: sg-87654321
+        allow:
+          - ip: 192.168.1.2
+            port: 80
+  aliyun:
+    region: cn-hangzhou
+    access_key: access_key
+    secret_key: secret_key
+    rules:
+      - sg: sg-87654321
+        allow:
+          - ip: 192.168.1.2
+            port: 80
+
+
