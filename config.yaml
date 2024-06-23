@@ -6,31 +6,36 @@
 
 # 云服务
 huawei:
-  region: cn-north-1
-  access_key: access_key
-  secret_key: secret_key
-  rules:
-    - sg: sg-87654321
-      allow:
-        - ip: 192.168.1.2
-          port: 80
-tencent:
-  region: tencent_cloud_region_code(e.g ap-guangzhou)
-  access_key: secret_id
-  secret_key: secret_key
-  rules:
-    - sg: sg-87654321
-      allow:
-        - ip: 192.168.1.2
-          port: 80
-aliyun:
-  region: cn-hangzhou
-  access_key: access_key
-  secret_key: secret_key
-  rules:
-    - sg: sg-87654321
-      allow:
-        - ip: 192.168.1.2
-          port: 80
+  access_key: your_huawei_access_key
+  secret_key: your_huawei_secret_key
+  regions:
+    - region: cn-north-1
+      rules:
+        - sg: sg-87654321
+          allow:
+            - port: 80
+              desc: "http"
+            - port: 444
+              desc: "docs"
+    - region: cn-test
+      rules:
+        - sg: sg-haha
+          allow:
+            - port: 80
+            - port: 444
 
-
+#    - region: cn-east-2
+#      rules:
+#        - sg: sg-12345678
+#          allow:
+#            - ip: 192.168.2.3
+#              port: 8080
+#tencent:
+#  region: tencent_cloud_region_code(e.g ap-guangzhou)
+#  access_key: secret_id
+#  secret_key: secret_key
+#  rules:
+#    - sg: sg-87654321
+#      allow:
+#        - ip: 192.168.1.2
+#          port: 80
