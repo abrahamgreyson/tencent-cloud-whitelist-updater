@@ -2,3 +2,5 @@
 venv/
 config.yaml
 __pycache__/
+ip_cache.txt
+update_whitelist.log
