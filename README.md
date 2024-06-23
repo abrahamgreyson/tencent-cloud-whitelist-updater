@@ -4,7 +4,7 @@
 
 1. 基于 Python 3.12 开发，猜测支持 Python 3.6+ 版本，不行就用 3.12 
 2. 安装依赖 `pip install -r requirements.txt`
-3. 配置 `config.py` 文件，参考 `config.py.example`
+3. 复制模板配置文件 `config.example.yaml` 到 `config.yaml`，按需配置
 4. 运行
 
   ```bash
