@@ -8,7 +8,7 @@ Date: 2024/6/13 16:40:14
 from apscheduler.schedulers.blocking import BlockingScheduler
 from update_whitelist.config.config import config
 from update_whitelist.ip_fetcher import get_current_ip, load_cached_ip, cache_ip
-from update_whitelist.updater import update_cloud_providers
+from update_whitelist.updater import Updater
 from update_whitelist.logger import get_logger
 
 logger = get_logger()
@@ -40,7 +40,8 @@ def check_and_update_ip():
         ip_changed, current_ip = has_ip_changed()
         if ip_changed:
             logger.info(f"IP 地址已经更改：{current_ip}. 更新云服务白名单.")
-            update_cloud_providers(current_ip, config)
+            updater = Updater()
+            updater.update_cloud_providers(current_ip, config)
             logger.info("云服务白名单更新成功.")
         else:
             logger.info("IP 地址没有更改，无需更新云服务白名单")

@@ -4,34 +4,42 @@
 # 配置文件模板
 # 请将此文件复制一份并命名为config.yaml
 
-# 云服务
-cloud:
-  huawei:
-    region: cn-north-1
-    access_key: access_key
-    secret_key: secret_key
-    rules:
-      - sg: sg-87654321
-        allow:
-        - ip: 192.168.1.2
-          port: 80
-  tencent:
-    region: tencent_cloud_region_code(e.g ap-guangzhou)
-    secret_id: secret_id
-    secret_key: secret_key
-    rules:
-      - sg: sg-87654321
-        allow:
-          - ip: 192.168.1.2
-            port: 80
-  aliyun:
-    region: cn-hangzhou
-    access_key: access_key
-    secret_key: secret_key
-    rules:
-      - sg: sg-87654321
-        allow:
-          - ip: 192.168.1.2
-            port: 80
-
-
+# 华为云
+huawei:
+  access_key: your_huawei_access_key
+  secret_key: your_huawei_secret_key
+  regions:
+    - region: huawei_region_code(e.g cn-east-3)
+      rules:
+        - sg: your_huawei_security_group_id
+          allow:
+            - port: 80
+              desc: http
+            - port: 444
+              desc: docs
+            - port: 5542
+              desc: haha
+            - port: 33558
+    - region: huawei_region_code(e.g cn-east-3)
+      rules:
+        - sg: your_another_huawei_security_group_id
+          allow:
+            - port: 7799
+              desc: test
+            - port: 11111
+# 腾讯云
+tencent:
+  access_key: your_tencent_cloud_access_key
+  secret_key: your_tencent_cloud_secret_key
+  regions:
+    - region: tencent_cloud_region_code(e.g ap-guangzhou)
+      rules:
+        - sg: your_tencent_security_group_id
+          allow:
+            - port: 80
+              desc: http
+            - port: 444
+              desc: docs
+            - port: 5542
+              desc: haha
+            - port: 33558
