@@ -55,7 +55,16 @@
 
 在[统一身份认证服务 IAM](https://console.huaweicloud.com/iam/?agencyId=c79cb5a07cda49f9bb4c4f7d97d4d506&region=cn-east-3&locale=zh-cn#/iam/users) 中创建用户，赋予特定的接口权限，获取用户的 `Access Key` 和 `Secret Key`。
 
+我们使用到的华为云 VPC 接口有：
+- `ListSecurityGroupRule`
+- `DeleteSecurityGroupRule`
+- `BatchCreateSecurityGroupRules`
+
 #### 腾讯云
 
-和华为云类似
+在[访问管理](https://console.cloud.tencent.com/cam/overview)中创建用户，赋予特定的接口权限，获取用户的 `SecretId` 和 `SecretKey`。
 
+我们使用到的接口：
+- `DescribeSecurityGroupPolicies`
+- `DeleteSecurityGroupPolicies`
+- `CreateSecurityGroupPolicies`
