@@ -46,7 +46,6 @@ class HuaweiCloud(BaseCloudProvider):
             security_group_rules=rules_body
         )
         response = self.client.batch_create_security_group_rules(request)
-        print(response)
 
     def initialize_client(self):
         """ 初始化客户端 """
