@@ -1,0 +1,32 @@
+image: 'atomhub.openatom.cn/amd64/python:3.12-rc'
+
+stages:          # 定义执行的阶段顺序
+  - test
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip-cache"
+
+cache:
+  paths:
+    - $PIP_CACHE_DIR
+
+build-job:       # 安装依赖
+  stage: test
+  script:
+    - python --version
+    - pip install -e ".[dev]"
+  retry:
+    max: 2
+    when: script_failure
+
+pytest:
+  stage: test
+  script:
+    - pytest --junitxml=report.xml --cov=update_whitelist tests/ --cov-report=xml --cov-report=term
+  artifacts:
+    when: always
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
+      junit: report.xml

@@ -1,0 +1,28 @@
+[project]
+name = "update_whitelist"
+version = "0.1.0"
+description = "A tool to update cloud provider whitelists"
+requires-python = ">=3.7"
+dependencies = [
+    "pyyaml~=6.0.1",
+    "huaweicloudsdkcore~=3.1.99",
+    "huaweicloudsdkvpc~=3.1.99",
+    "pydantic~=2.7.4",
+    "requests~=2.32.3",
+    "APScheduler~=3.10.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest~=8.2.2",
+    "pytest-mock~=3.14.0",
+    "pytest-cov~=5.0.0"
+]
+
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+addopts = "--import-mode=importlib"
+pythonpath = ["."]
