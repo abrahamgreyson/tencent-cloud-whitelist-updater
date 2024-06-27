@@ -1,18 +1,28 @@
 image: 'atomhub.openatom.cn/amd64/python:3.12-rc'
 
+stages:
+  - prepare
+  - test
+
 variables:
   VENV_PATH: "$CI_PROJECT_DIR/venv"
 
-before_script:
-  - python -m venv $VENV_PATH
-  - source $VENV_PATH/bin/activate
+cache:
+  paths:
+    - .pip-cache/
+    - $VENV_PATH
 
 install-deps:
-  stage: .pre
+  stage: prepare
   script:
+    - python -m venv $VENV_PATH
+    - source $VENV_PATH/bin/activate
     - pip install --upgrade pip
     - pip install -e ".[dev]"
-    - cp config.example.yaml config.yaml
+  artifacts:
+    paths:
+      - $VENV_PATH
+    expire_in: 1 hour
 
 test:
   stage: test
