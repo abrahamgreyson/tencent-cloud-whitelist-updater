@@ -6,3 +6,5 @@ ip_cache.txt
 update_whitelist.log*
 .coverage
 *.egg-info
+coverage.xml
+report.xml
