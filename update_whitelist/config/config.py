@@ -14,7 +14,7 @@ from typing import List, Optional
 
 
 class Allow(BaseModel):
-    port: int
+    port: str | int
     desc: Optional[str] = None
 
 
