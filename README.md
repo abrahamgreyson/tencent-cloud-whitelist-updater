@@ -62,6 +62,25 @@
 - `DeleteSecurityGroupRule`
 - `BatchCreateSecurityGroupRules`
 
+我们需要放行的权限：
+```json
+{
+    "Version": "1.1",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "vpc:securityGroupRules:create",
+                "vpc:securityGroupRules:delete",
+                "vpc:securityGroupRules:get"
+            ]
+        }
+    ]
+}
+这个就够了
+
+```
+
 #### 腾讯云
 
 在[访问管理](https://console.cloud.tencent.com/cam/overview)中创建用户，赋予特定的接口权限，获取用户的 `SecretId` 和 `SecretKey`。
@@ -70,3 +89,23 @@
 - `DescribeSecurityGroupPolicies`
 - `DeleteSecurityGroupPolicies`
 - `CreateSecurityGroupPolicies`
+
+我们需要放行的权限：
+```json
+{
+  "statement": [
+    {
+      "action": [
+        "cvm:DescribeSecurityGroup*",
+        "cvm:Create*",
+        "cvm:DeleteSecurityGroupPolicy"
+      ],
+      "effect": "allow",
+      "resource": [
+        "*"
+      ]
+    }
+  ],
+  "version": "2.0"
+}
+```
