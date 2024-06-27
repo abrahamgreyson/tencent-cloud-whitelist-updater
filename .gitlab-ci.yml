@@ -1,43 +1,34 @@
-image: 'atomhub.openatom.cn/amd64/python:3.12-rc'
-
-stages:
-  - deps
-  - test
-
 variables:
-  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip-cache"
+  VENV_PATH: "$CI_PROJECT_DIR/venv"
 
-cache:
-  paths:
-    - $PIP_CACHE_DIR
+before_script:
+  - python -m venv $VENV_PATH
+  - source $VENV_PATH/bin/activate
 
 install-deps:
-  stage: deps
+  stage: .pre
   script:
-    - python --version
     - pip install --upgrade pip
     - pip install -e ".[dev]"
-    - pip list
-    - which pytest
-    - pytest --version
   artifacts:
     paths:
-      - ./*
+      - $VENV_PATH
+      - update_whitelist/
+      - tests/
+      - pyproject.toml
     exclude:
       - .git/
-      - .gitlab-ci.yml
+      - '**/__pycache__'
 
-pytest:
+test:
   stage: test
-  needs: ["install-deps"]
   script:
-    - python --version
+    - source $VENV_PATH/bin/activate
     - pip list
     - which pytest
     - pytest --version
-    - pytest --junitxml=report.xml --cov=update_whitelist tests/ --cov-report=xml --cov-report=term
+    - pytest tests/ --cov=update_whitelist --junitxml=report.xml --cov-report=xml
   artifacts:
-    when: always
     reports:
       coverage_report:
         coverage_format: cobertura
