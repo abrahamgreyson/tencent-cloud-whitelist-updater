@@ -4,7 +4,7 @@
 
 ### 部署
 
-1. 基于 Python 3.12 开发，猜测支持 Python 3.6+ 版本，不行就用 3.12 
+1. 基于 Python 3.12 开发，必须使用 3.10 以上，因为我们使用了联合类型 `str | int` 这种
 2. 安装依赖 `pip install -r requirements.txt`
 3. 复制模板配置文件 `config.example.yaml` 到 `config.yaml`，按需配置
 4. 运行
