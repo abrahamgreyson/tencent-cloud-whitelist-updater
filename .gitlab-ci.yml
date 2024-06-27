@@ -1,6 +1,7 @@
 image: 'atomhub.openatom.cn/amd64/python:3.12-rc'
 
-stages:          # 定义执行的阶段顺序
+stages:
+  - deps
   - test
 
 variables:
@@ -10,18 +11,27 @@ cache:
   paths:
     - $PIP_CACHE_DIR
 
-build-job:       # 安装依赖
-  stage: test
+install-deps:
+  stage: deps
   script:
     - python --version
     - pip install -e ".[dev]"
+    - pip list  # 列出已安装的包
   retry:
     max: 2
     when: script_failure
+  artifacts:
+    paths:
+      - ./*  # 保存整个项目目录，包括安装的包
 
 pytest:
   stage: test
+  needs: ["install-deps"]
   script:
+    - python --version
+    - pip list  # 再次列出已安装的包
+    - which pytest  # 查找 pytest 的位置
+    - pytest --version  # 检查 pytest 版本
     - pytest --junitxml=report.xml --cov=update_whitelist tests/ --cov-report=xml --cov-report=term
   artifacts:
     when: always
