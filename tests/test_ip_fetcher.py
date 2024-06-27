@@ -21,7 +21,14 @@ def test_get_current_ip(mocker):
 def test_load_cached_ip(mocker):
     # 使用模拟的 open 替代内置的 open
     mocker.patch('builtins.open', mocker.mock_open(read_data='127.0.0.1\n'))
+    mocker.patch('os.path.exists', return_value=True)  # 确保文件存在
     assert load_cached_ip() == '127.0.0.1'
+
+
+def test_load_cached_ip_cache_file_not_exists(mocker):
+    # 使用模拟的 open 替代内置的 open
+    mocker.patch('os.path.exists', return_value=False)  # 确保文件存在
+    assert load_cached_ip() is None
 
 
 def test_cache_ip(mocker):

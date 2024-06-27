@@ -4,7 +4,6 @@ Date: 2024/6/25 16:31:45
 """
 from huaweicloudsdkcore.auth.credentials import BasicCredentials
 from huaweicloudsdkvpc.v3 import VpcClient
-
 from update_whitelist.cloud_providers.huawei_cloud import HuaweiCloud
 
 
