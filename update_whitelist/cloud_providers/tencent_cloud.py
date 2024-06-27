@@ -52,6 +52,7 @@ class TencentCloud(BaseCloudProvider):
             }
             req.from_json_string(json.dumps(params))
             resp = self.client.CreateSecurityGroupPolicies(req)
+            print(resp.to_json_string())
             # 输出json格式的字符串回包
         except TencentCloudSDKException as err:
             BaseCloudProvider.log(err)
@@ -73,6 +74,7 @@ class TencentCloud(BaseCloudProvider):
             }
             req.from_json_string(json.dumps(params))
             resp = self.client.DeleteSecurityGroupPolicies(req)
+            print(resp.to_json_string())
         except TencentCloudSDKException as err:
             BaseCloudProvider.log(err)
 
