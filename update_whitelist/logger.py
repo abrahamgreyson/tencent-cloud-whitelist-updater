@@ -27,7 +27,7 @@ def get_logger(name=__name__):
         fh.setLevel(logging.DEBUG)
 
         # 创建一个格式器，并添加到处理器中
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
         ch.setFormatter(formatter)
         fh.setFormatter(formatter)
 
