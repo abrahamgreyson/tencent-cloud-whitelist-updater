@@ -1,5 +1,8 @@
 ## 定时更新云服务安全组规则 2.0
 
+[![pipeline status](https://hello.abe/abe/update-whitelist/badges/main/pipeline.svg)](https://hello.abe/abe/update-whitelist/-/commits/main)
+[![coverage report](https://hello.abe/abe/update-whitelist/badges/main/coverage.svg)](https://hello.abe/abe/update-whitelist/-/commits/main)
+
 支持多个云，每个云支持多个 region，每个 region 支持多个安全组，每个安全组支持多个端口的放行
 
 ### 部署
