@@ -12,6 +12,7 @@ install-deps:
   script:
     - pip install --upgrade pip
     - pip install -e ".[dev]"
+    - cp config.example.yaml config.yaml
   artifacts:
     paths:
       - $VENV_PATH
