@@ -15,23 +15,26 @@ install-deps:
   stage: deps
   script:
     - python --version
+    - pip install --upgrade pip
     - pip install -e ".[dev]"
-    - pip list  # 列出已安装的包
-  retry:
-    max: 2
-    when: script_failure
+    - pip list
+    - which pytest
+    - pytest --version
   artifacts:
     paths:
-      - ./*  # 保存整个项目目录，包括安装的包
+      - ./*
+    exclude:
+      - .git/
+      - .gitlab-ci.yml
 
 pytest:
   stage: test
   needs: ["install-deps"]
   script:
     - python --version
-    - pip list  # 再次列出已安装的包
-    - which pytest  # 查找 pytest 的位置
-    - pytest --version  # 检查 pytest 版本
+    - pip list
+    - which pytest
+    - pytest --version
     - pytest --junitxml=report.xml --cov=update_whitelist tests/ --cov-report=xml --cov-report=term
   artifacts:
     when: always
