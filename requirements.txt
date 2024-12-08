@@ -1,0 +1,5 @@
+pyyaml~=6.0.1
+schedule~=1.2.2
+huaweicloudsdkcore~=3.1.99
+huaweicloudsdkvpc~=3.1.99
+pydantic~=2.7.4
