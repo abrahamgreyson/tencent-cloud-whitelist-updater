@@ -1,16 +1,19 @@
 """
 Author: abe<wechat:abrahamgreyson>
 Date: 2024/6/13 16:40:14
-"""
-import os
 
+定义了用于表示云提供商配置的 Pydantic 模型，并从配置文件中读取配置数据
+我们暴露了 config 对象，使用时可以直接引用 config 对象获取配置数据
+:example: config.huawei.regions[0].region
+"""
+
+import os
 import yaml
 from pydantic import BaseModel
 from typing import List, Optional
 
 
 class Allow(BaseModel):
-    ip: str
     port: int
 
 
@@ -19,24 +22,27 @@ class Rule(BaseModel):
     allow: List[Allow]
 
 
-class CloudProvider(BaseModel):
+class Region(BaseModel):
     region: str
-    access_key: str
-    secret_key: str
     rules: List[Rule]
 
 
+class CloudProvider(BaseModel):
+    access_key: str
+    secret_key: str
+    regions: List[Region]
+
+
 class Config(BaseModel):
-    huawei: CloudProvider
-    tencent: CloudProvider
-    aliyun: CloudProvider
+    huawei: Optional[CloudProvider] = None
+    tencent: Optional[CloudProvider] = None
+    aliyun: Optional[CloudProvider] = None
 
 
 # 读配置文件
 current_path = os.path.dirname(os.path.abspath(__file__))
-root_path = os.path.dirname(current_path)
+root_path = os.path.dirname(os.path.dirname(current_path))
 config_path = os.path.join(root_path, 'config.yaml')
 with open(config_path, 'r') as file:
     config_data = yaml.safe_load(file)
 config = Config(**config_data)
-
