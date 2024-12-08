@@ -13,16 +13,6 @@ install-deps:
     - pip install --upgrade pip
     - pip install -e ".[dev]"
     - cp config.example.yaml config.yaml
-  artifacts:
-    paths:
-      - $VENV_PATH
-      - update_whitelist/
-      - tests/
-      - pyproject.toml
-      - config.example.yaml
-    exclude:
-      - .git/
-      - '**/__pycache__'
 
 test:
   stage: test
