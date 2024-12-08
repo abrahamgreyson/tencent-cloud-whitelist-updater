@@ -50,6 +50,14 @@
    [Install]
    WantedBy=multi-user.target
    ```
+### 测试
+
+```bash
+# 安装开发依赖
+pip install -e ".[dev]"
+# 运行
+pytest
+```
 
 ### 云服务配置
 
