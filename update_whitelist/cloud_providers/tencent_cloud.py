@@ -37,7 +37,7 @@ class TencentCloud(BaseCloudProvider):
         try:
             req = models.CreateSecurityGroupPoliciesRequest()
             params = {
-                "SecurityGroupId": "your_tencent_security_group_id",
+                "SecurityGroupId": group_id,
                 "SecurityGroupPolicySet": {
                     "Ingress": [
                         {
