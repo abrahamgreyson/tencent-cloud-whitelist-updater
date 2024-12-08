@@ -10,6 +10,7 @@ from update_whitelist.config.config import config
 from update_whitelist.ip_fetcher import get_current_ip, load_cached_ip, cache_ip
 from update_whitelist.updater import Updater
 from update_whitelist.logger import get_logger
+import requests
 
 logger = get_logger()
 
@@ -20,8 +21,14 @@ def has_ip_changed():
     """
     try:
         current_ip = get_current_ip()
+        if not current_ip:
+            logger.error("获取 IP 失败：IP 为空")
+            return False, None
+    except (requests.RequestException, requests.Timeout) as e:
+        logger.error(f"网络请求失败: {type(e).__name__} - {e}")
+        return False, None
     except Exception as e:
-        logger.error(f"取得本机 IP 出错: {e}")
+        logger.error(f"获取 IP 时发生未知错误: {type(e).__name__} - {e}")
         return False, None
 
     cached_ip = load_cached_ip()
