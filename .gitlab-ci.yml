@@ -19,6 +19,7 @@ install-deps:
       - update_whitelist/
       - tests/
       - pyproject.toml
+      - config.example.yaml
     exclude:
       - .git/
       - '**/__pycache__'
@@ -27,6 +28,7 @@ test:
   stage: test
   script:
     - source $VENV_PATH/bin/activate
+    - cp config.example.yaml config.yaml
     - pip list
     - which pytest
     - pytest --version
