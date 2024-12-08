@@ -25,6 +25,7 @@ class HuaweiCloud(BaseCloudProvider):
                 request = DeleteSecurityGroupRuleRequest()
                 request.security_group_rule_id = rule.id
                 response = self.client.delete_security_group_rule(request)
+                print(response)
         except exceptions.ClientRequestException as e:
             BaseCloudProvider.log(e)
         return None
@@ -46,6 +47,7 @@ class HuaweiCloud(BaseCloudProvider):
             security_group_rules=rules_body
         )
         response = self.client.batch_create_security_group_rules(request)
+        print(response)
 
     def initialize_client(self):
         """ 初始化客户端 """

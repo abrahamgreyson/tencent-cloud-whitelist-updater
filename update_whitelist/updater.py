@@ -52,13 +52,14 @@ class Updater:
         existed_rules = self.fetch_security_group_rules(sg)
         if existed_rules:
             # 删除所有规则
+            logger.info(f"有符合条件的规则，删除安全组 {sg} 的所有规则...")
             self.client.delete_rules(sg, existed_rules)
-            logger.info(f"删除安全组 {sg} 的所有规则...")
             pass
         else:
             logger.info(f"安全组 {sg} 没有符合条件的规则，跳过删除...")
             pass
         # 删完了就按照配置文件再加进去
+        logger.info(f"添加安全组 {sg} 的规则...")
         self.client.add_rules(sg, rules, ip)
 
         # 遍历每个 allow
@@ -93,6 +94,7 @@ class Updater:
             # 调用相应云服务的方法获取安全组规则
             rules = self.client.get_rules(sg)
             logger.info(f"成功获取安全组 {sg} 的规则")
+            print(rules)
             return rules
 
         except Exception as e:
