@@ -33,11 +33,15 @@ class CloudProvider(BaseModel):
     secret_key: str
     regions: List[Region]
 
+class IPInfo(BaseModel):
+    tokens: list[str]  
+
 
 class Config(BaseModel):
     huawei: Optional[CloudProvider] = None
     tencent: Optional[CloudProvider] = None
     aliyun: Optional[CloudProvider] = None
+    ipinfo: Optional[IPInfo] = None
 
 
 # 读配置文件

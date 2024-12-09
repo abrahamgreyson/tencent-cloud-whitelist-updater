@@ -6,6 +6,7 @@ import requests
 import random
 import os
 from .logger import get_logger
+from .config.config import config
 
 IP_CACHE_FILE = 'ip_cache.txt'
 logger = get_logger()
@@ -15,8 +16,8 @@ def get_current_ip():
     """
     通过 ipinfo.io 获取当前 IP 地址
     """
-    api = ['https://ipinfo.io/ip?token=token_a', 'https://ipinfo.io/ip?token=token_b']
-    url = random.choice(api)
+    ipinfo_endpoint = 'https://ipinfo.io/ip?token='
+    url = ipinfo_endpoint + random.choice(config.ipinfo.tokens)
     logger.info(f"通过 {url} 获取 IP")
     response = requests.get(url)
     if response.status_code == 200:
