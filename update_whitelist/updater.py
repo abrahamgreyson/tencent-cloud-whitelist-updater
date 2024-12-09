@@ -20,7 +20,7 @@ class Updater:
 
         # 遍历每个云服务提供商
         for provider_name, provider_config in config.dict().items():
-            if provider_config is None:
+            if provider_config is None or provider_name == 'ipinfo':
                 continue
 
             logger.info(f"更新 {provider_name}...")

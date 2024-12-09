@@ -43,3 +43,10 @@ tencent:
             - port: 5542
               desc: haha
             - port: 33558
+
+# ipinfo
+# 请在 ipinfo.io 申请token
+ipinfo:
+  tokens:
+    - token_a
+    - token_b
