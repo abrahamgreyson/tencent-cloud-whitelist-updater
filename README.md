@@ -162,3 +162,7 @@ pip install -e ".[dev]"
 # 运行
 pytest
 ```
+
+## LICENSE
+
+MIT
