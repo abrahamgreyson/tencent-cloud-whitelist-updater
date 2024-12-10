@@ -1,11 +1,12 @@
-## 定时更新云服务安全组规则 2.0
+# 定时更新云服务安全组规则
 
-[![pipeline status](https://hello.abe/abe/update-whitelist/badges/main/pipeline.svg)](https://hello.abe/abe/update-whitelist/-/commits/main)
-[![coverage report](https://hello.abe/abe/update-whitelist/badges/main/coverage.svg)](https://hello.abe/abe/update-whitelist/-/commits/main)
+[![Test](https://github.com/abrahamgreyson/whitelist_updater/actions/workflows/test.yml/badge.svg)](https://github.com/abrahamgreyson/whitelist_updater/actions/workflows/test.yml)
+
+[![codecov](https://codecov.io/gh/abrahamgreyson/whitelist_updater/branch/main/graph/badge.svg?token=Fc4MbBmMpZ)](https://codecov.io/gh/abrahamgreyson/whitelist_updater)
 
 支持多个云，每个云支持多个 region，每个 region 支持多个安全组，每个安全组支持多个端口的放行
 
-### 部署
+## 部署
 
 1. 基于 Python 3.12 开发，必须使用 3.10 以上，因为我们使用了联合类型 `str | int` 这种
 2. 安装依赖 `pip install -r requirements.txt`
@@ -53,7 +54,8 @@
    [Install]
    WantedBy=multi-user.target
    ```
-### 测试
+  
+## 测试
 
 ```bash
 # 安装开发依赖
@@ -69,11 +71,13 @@ pytest
 在[统一身份认证服务 IAM](https://console.huaweicloud.com/iam/?agencyId=c79cb5a07cda49f9bb4c4f7d97d4d506&region=cn-east-3&locale=zh-cn#/iam/users) 中创建用户，赋予特定的接口权限，获取用户的 `Access Key` 和 `Secret Key`。
 
 我们使用到的华为云 VPC 接口有：
+
 - `ListSecurityGroupRule`
 - `DeleteSecurityGroupRule`
 - `BatchCreateSecurityGroupRules`
 
 我们需要放行的权限：
+
 ```json
 {
     "Version": "1.1",
@@ -97,11 +101,13 @@ pytest
 在[访问管理](https://console.cloud.tencent.com/cam/overview)中创建用户，赋予特定的接口权限，获取用户的 `SecretId` 和 `SecretKey`。
 
 我们使用到的接口：
+
 - `DescribeSecurityGroupPolicies`
 - `DeleteSecurityGroupPolicies`
 - `CreateSecurityGroupPolicies`
 
 我们需要放行的权限：
+
 ```json
 {
   "statement": [
