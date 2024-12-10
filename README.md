@@ -119,6 +119,40 @@
   "version": "2.0"
 }
 ```
+
+## 扩展
+
+因为是自用的，所以仅实现了腾讯和华为云，如果你使用其它云平台，请按照 `update_whitelist/cloud_providers` 目录下的现有代码实现自己的云服务供应商，需要实现的方法签名如下。 为了更加快捷地实现这些方法， 可以直接去云服务商的 API 调试台，先搞清楚接口什么怎么调用的，然后直接引入其 sdk 即可。
+
+```python
+    @abstractmethod
+    def initialize_client(self):
+        """
+        初始化特定云服务的客户端
+        """
+    pass
+
+    @abstractmethod
+    def delete_rules(self, group_id, rules):
+        """
+        删除安全组规则
+        """
+        pass
+
+    @abstractmethod
+    def add_rules(self, group_id, rules, ip):
+        """
+        添加安全组规则
+        """
+        pass
+
+    @abstractmethod
+    def get_rules(self, group_id):
+        """
+        获取安全组规则
+        """
+        pass
+```
   
 ## 测试
 
