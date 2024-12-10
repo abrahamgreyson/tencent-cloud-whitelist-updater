@@ -61,7 +61,7 @@ def main():
     启动定时任务
     """
     scheduler = BlockingScheduler()
-    scheduler.add_job(check_and_update_ip, 'interval', seconds=5)
+    scheduler.add_job(check_and_update_ip, 'interval', seconds=180)
 
     try:
         scheduler.start()

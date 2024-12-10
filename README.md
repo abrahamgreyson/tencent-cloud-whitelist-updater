@@ -1,16 +1,16 @@
 # 定时更新云服务安全组规则
 
 [![Test](https://github.com/abrahamgreyson/whitelist_updater/actions/workflows/test.yml/badge.svg)](https://github.com/abrahamgreyson/whitelist_updater/actions/workflows/test.yml)
-
 [![codecov](https://codecov.io/gh/abrahamgreyson/whitelist_updater/branch/main/graph/badge.svg?token=Fc4MbBmMpZ)](https://codecov.io/gh/abrahamgreyson/whitelist_updater)
 
-支持多个云，每个云支持多个 region，每个 region 支持多个安全组，每个安全组支持多个端口的放行
+这个工具旨在在缺乏堡垒机的情况下，对在线服务器放行本地 ip，免得长期暴露敏感端口。它会定时（每 3 分钟）获取本地的外网 ip，更新到云服务器的安全组白名单（目前支持腾讯云、华为云，其它云请自己实现接口）。
+支持多个云，每个云支持多个 region，每个 region 支持多个安全组，每个安全组支持多个端口的放行。
 
 ## 部署
 
-1. 基于 Python 3.12 开发，必须使用 3.10 以上，因为我们使用了联合类型 `str | int` 这种
+1. 基于 Python 3.12 开发（推荐使用 3.12+），如果低于 3.12 也必须使用 3.10 以上，因为我们使用了联合类型 `str | int` 这种，请注意，并没有针对 3.10 和  3.11 进行测试
 2. 安装依赖 `pip install -r requirements.txt`
-3. 复制模板配置文件 `config.example.yaml` 到 `config.yaml`，按需配置
+3. 复制模板配置文件 `config.example.yaml` 到 `config.yaml`，按需配置（请看下一节配置章节）
 4. 运行
 
   ```bash
@@ -54,19 +54,14 @@
    [Install]
    WantedBy=multi-user.target
    ```
-  
-## 测试
 
-```bash
-# 安装开发依赖
-pip install -e ".[dev]"
-# 运行
-pytest
-```
+## 配置
 
-### 云服务配置
+### ipinfo.io
 
-#### 华为云
+我们使用 ipinfo 的服务，去获得本地外网 ip， 最好申请个 token， 这样可以有更多的 rate limit 上限。
+
+### 华为云
 
 在[统一身份认证服务 IAM](https://console.huaweicloud.com/iam/?agencyId=c79cb5a07cda49f9bb4c4f7d97d4d506&region=cn-east-3&locale=zh-cn#/iam/users) 中创建用户，赋予特定的接口权限，获取用户的 `Access Key` 和 `Secret Key`。
 
@@ -92,8 +87,6 @@ pytest
         }
     ]
 }
-这个就够了
-
 ```
 
 #### 腾讯云
@@ -125,4 +118,13 @@ pytest
   ],
   "version": "2.0"
 }
+```
+  
+## 测试
+
+```bash
+# 安装开发依赖
+pip install -e ".[dev]"
+# 运行
+pytest
 ```
