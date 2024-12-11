@@ -11,7 +11,7 @@ from __future__ import annotations
 import os
 import yaml
 from pydantic import BaseModel
-from typing import List, Union, Optional
+from typing import List, Optional
 
 
 class Allow(BaseModel):
