@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/github/license/abrahamgreyson/update-whitelist.svg?)](https://opensource.org/license/mit)
 [![CodeFactor](https://www.codefactor.io/repository/github/abrahamgreyson/update-whitelist/badge)](https://www.codefactor.io/repository/github/abrahamgreyson/update-whitelist)
 [![Test](https://github.com/abrahamgreyson/update-whitelist/actions/workflows/test.yml/badge.svg)](https://github.com/abrahamgreyson/update-whitelist/actions/workflows/test.yml)
-[![Codecov](https://codecov.io/gh/abrahamgreyson/whitelist_updater/branch/main/graph/badge.svg?token=Fc4MbBmMpZ)](https://codecov.io/gh/abrahamgreyson/whitelist_updater)
+[![Codecov](https://codecov.io/gh/abrahamgreyson/update-whitelist/branch/main/graph/badge.svg?token=Fc4MbBmMpZ)](https://codecov.io/gh/abrahamgreyson/update-whitelist?branch=main)
 ![Python versions](https://img.shields.io/badge/python-3.9%7C3.10%7C3.11%7C3.12-blue)
 ![Views](https://komarev.com/ghpvc/?username=abe-update-whitelist&color=green)
 
