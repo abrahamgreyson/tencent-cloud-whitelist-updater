@@ -10,7 +10,7 @@ Date: 2024/6/13 16:40:14
 import os
 import yaml
 from pydantic import BaseModel
-from typing import List, Union, Optional
+from typing import List, Union, Optional, Dict, Any
 
 
 class Allow(BaseModel):
