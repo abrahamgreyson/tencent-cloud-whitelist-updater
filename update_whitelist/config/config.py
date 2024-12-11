@@ -7,11 +7,10 @@ Date: 2024/6/13 16:40:14
 :example: config.huawei.regions[0].region
 """
 
-from __future__ import annotations
 import os
 import yaml
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List, Optional, Union
 
 
 class Allow(BaseModel):
