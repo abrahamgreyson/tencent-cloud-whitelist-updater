@@ -5,7 +5,7 @@
 [![Test](https://github.com/abrahamgreyson/update-whitelist/actions/workflows/test.yml/badge.svg)](https://github.com/abrahamgreyson/update-whitelist/actions/workflows/test.yml)
 [![Codecov](https://codecov.io/gh/abrahamgreyson/update-whitelist/branch/main/graph/badge.svg?token=Fc4MbBmMpZ)](https://codecov.io/gh/abrahamgreyson/update-whitelist?branch=main)
 [![Python versions](https://img.shields.io/badge/python-3.9%7C3.10%7C3.11%7C3.12-blue)](https://github.com/abrahamgreyson/update-whitelist/actions/workflows/test.yml)
-[![Views](https://komarev.com/ghpvc/?username=abe-update-whitelist&color=green)](https://komarev.com/ghpvc/)
+[![Views](https://komarev.com/ghpvc/?username=abe-update-whitelist&color=green&label=views)](https://komarev.com/ghpvc/)
 
 这个工具旨在在缺乏堡垒机的情况下，对在线服务器放行本地 ip，免得长期暴露敏感端口。它会定时（每 3 分钟）获取本地的外网 ip，更新到云服务器的安全组白名单（目前支持腾讯云、华为云，其它云请参考本页末尾的“扩展”部分）。
 支持多个云，每个云支持多个 region，每个 region 支持多个安全组，每个安全组支持多个端口的放行。
