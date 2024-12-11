@@ -3,15 +3,17 @@
 [![License](https://img.shields.io/github/license/abrahamgreyson/update-whitelist.svg?)](https://opensource.org/license/mit)
 [![CodeFactor](https://www.codefactor.io/repository/github/abrahamgreyson/update-whitelist/badge)](https://www.codefactor.io/repository/github/abrahamgreyson/update-whitelist)
 [![Test](https://github.com/abrahamgreyson/whitelist_updater/actions/workflows/test.yml/badge.svg)](https://github.com/abrahamgreyson/whitelist_updater/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/abrahamgreyson/whitelist_updater/branch/main/graph/badge.svg?token=Fc4MbBmMpZ)](https://codecov.io/gh/abrahamgreyson/whitelist_updater)
+[![Codecov](https://codecov.io/gh/abrahamgreyson/whitelist_updater/branch/main/graph/badge.svg?token=Fc4MbBmMpZ)](https://codecov.io/gh/abrahamgreyson/whitelist_updater)
+![Python versions](https://img.shields.io/badge/python-3.9%7C3.10%7C3.11%7C3.12-blue)
+![Views](https://komarev.com/ghpvc/?username=abe-update-whitelist&color=green)
 
 这个工具旨在在缺乏堡垒机的情况下，对在线服务器放行本地 ip，免得长期暴露敏感端口。它会定时（每 3 分钟）获取本地的外网 ip，更新到云服务器的安全组白名单（目前支持腾讯云、华为云，其它云请自己实现接口）。
 支持多个云，每个云支持多个 region，每个 region 支持多个安全组，每个安全组支持多个端口的放行。
 
 ## 部署
 
-1. 基于 Python 3.12 开发（推荐使用 3.12+），如果低于 3.12 也必须使用 3.10 以上，因为我们使用了联合类型 `str | int` 这种，请注意，并没有针对 3.10 和  3.11 进行测试
-2. 安装依赖 `pip install -r requirements.txt`
+1. 支持 3.9 - 3.12
+2. 克隆项目，安装依赖 `pip install -r requirements.txt`
 3. 复制模板配置文件 `config.example.yaml` 到 `config.yaml`，按需配置（请看下一节配置章节）
 4. 运行
 
