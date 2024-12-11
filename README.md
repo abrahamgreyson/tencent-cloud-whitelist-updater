@@ -1,5 +1,7 @@
 # 定时更新云服务安全组规则
 
+[![License](https://img.shields.io/github/license/abrahamgreyson/update-whitelist.svg?)](https://opensource.org/license/mit)
+[![CodeFactor](https://www.codefactor.io/repository/github/abrahamgreyson/update-whitelist/badge)](https://www.codefactor.io/repository/github/abrahamgreyson/update-whitelist)
 [![Test](https://github.com/abrahamgreyson/whitelist_updater/actions/workflows/test.yml/badge.svg)](https://github.com/abrahamgreyson/whitelist_updater/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/abrahamgreyson/whitelist_updater/branch/main/graph/badge.svg?token=Fc4MbBmMpZ)](https://codecov.io/gh/abrahamgreyson/whitelist_updater)
 
