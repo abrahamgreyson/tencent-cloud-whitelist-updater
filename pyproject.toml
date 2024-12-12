@@ -37,3 +37,6 @@ build-backend = "setuptools.build_meta"
 [tool.pytest.ini_options]
 addopts = "--import-mode=importlib"
 pythonpath = ["."]
+
+[tool.setuptools_scm]
+write_to = "update_whitelist/_version.py"
