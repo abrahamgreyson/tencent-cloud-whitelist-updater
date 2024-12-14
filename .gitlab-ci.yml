@@ -15,9 +15,8 @@ cache:
 
 install-deps:
   stage: prepare
-  before_script:
-    - apt-get update && apit install -y git
   script:
+    - which git || echo "Git not exists"
     - python -m venv $VENV_PATH
     - source $VENV_PATH/bin/activate
     - pip install --upgrade pip
