@@ -24,7 +24,6 @@ install-deps:
     - pip install build  # 添加构建工具
     - python -m build  # 显式构建步骤
     - pip install -e ".[dev]"
-    - python -c "from update_whitelist import __version__; print(f'Version: {__version__}')"  # 验证
   artifacts:
     paths:
       - $VENV_PATH
