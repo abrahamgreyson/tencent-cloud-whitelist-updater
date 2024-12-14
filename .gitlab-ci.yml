@@ -6,6 +6,7 @@ stages:
 
 variables:
   VENV_PATH: "$CI_PROJECT_DIR/venv"
+  GIT_DEPTH: 0
 
 cache:
   paths:
@@ -14,14 +15,20 @@ cache:
 
 install-deps:
   stage: prepare
+  before_script:
+    - apt-get update && apit install -y git
   script:
     - python -m venv $VENV_PATH
     - source $VENV_PATH/bin/activate
     - pip install --upgrade pip
+    - pip install build  # 添加构建工具
+    - python -m build  # 显式构建步骤
     - pip install -e ".[dev]"
+    - python -c "from update_whitelist import __version__; print(f'Version: {__version__}')"  # 验证
   artifacts:
     paths:
       - $VENV_PATH
+      - update_whitelist/_version.py
     expire_in: 1 hour
 
 test:
